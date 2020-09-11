@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "aforo-41bbd": {
+      "hosting": {
+        "rutappsAforoUsuario": [
+          "aforo-41bbd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "aforo-41bbd"
+  }
+}

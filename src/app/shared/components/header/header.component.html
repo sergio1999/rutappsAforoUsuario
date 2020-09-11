@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex" id="navbar" >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="p-2 flex-grow-1">
+        <div style=" text-align:center; width: 70%; ">
+            <img src="assets/header/logo.png" alt="logo">
+        </div>
+    </div>
+    <div class="collapse navbar-collapse justify-content-md-center align-items-center" id="navbarTogglerDemo03" >
+        <a class="nav-link p-2 colorText" routerLinkActive="active">Solucion COVID-19</a>
+        <a class="nav-link p-2 colorText" routerLinkActive="active" href="https://controlaforo.co/#contacto">Contáctenos</a>
+
+        <div class="px-0 py-2" >
+            <p class="nav-link px-0 py-2 mb-0" *ngIf="path != 'registro'">
+                <button mat-raised-button class="btnheader ml-2" (click)="redirectTo('/registro')">Registrar</button>
+            </p>
+            <p class="nav-link px-0 py-2 mb-0" *ngIf="path == 'registro'">
+                <button mat-raised-button class="btnheader ml-2" (click)="redirectTo('/login')">Ingresar</button>
+            </p>
+        </div>
+    </div>
+</nav>

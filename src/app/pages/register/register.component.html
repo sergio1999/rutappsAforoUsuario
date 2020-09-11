@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 pl-0">
+            <img src="assets/login/bg.png" alt="bg"  class="img-fluid d-none d-lg-block d-xl-block">
+        </div>
+        <div class="col-md-7 pb-5">
+            <div class=" mt-3 pt-3 pb-1 mb-5 ml-3">
+                <div>
+                    <button mat-icon-button (click)="backPage('/login')" class="mr-0 mr-sm-16 buttonInicio"> 
+                        <mat-icon>arrow_back_ios</mat-icon>
+                        Volver
+                    </button>
+                </div>
+                <div style="text-align: end; color: #000000; font-size: 12px;">Paso 1 de 4</div>
+                <div class="mt-3 pt-4 pl-5 mb-5">
+                    <div style="font-size: 18px; color: #7646ff">Ingresa tus datos personales</div><br>
+                    <div style="color: rgba(69,88,128, 0.5); font-size: 14px">*Ingresa tus documentos para continuar con el registro</div><br>
+                    <mat-divider></mat-divider><br><br>
+                    <form [formGroup]="formRegister" >
+                        <!-- DOCUMENTO-->
+                        <mat-form-field appearance="outline"  fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4">
+                            <mat-label>Numero de documento</mat-label>
+                            <input matInput placeholder="Documento" type="number" formControlName="documento" required>
+                            <mat-error *ngIf="formRegister.controls.documento.status == 'INVALID'">Este campo es obligatorio*</mat-error> 
+                        </mat-form-field>
+                        <!-- TIPO DOCUMENTO-->
+                        <mat-form-field appearance="outline"  fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" >
+                            <mat-label>Tipo de documento</mat-label>
+                                <mat-select formControlName="typeDoc">
+                                    <mat-option *ngFor="let documento of documents" [value]="documento.doc">
+                                        {{documento.doc}}
+                                    </mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                        <!--TERMINOS-->
+                        <br>
+                        <div class="terms" fxLayout="row" fxLayoutAlign="center center">
+                            <mat-checkbox aria-label="Accept" required formControlName="terminos">
+                                <span>Aceptar terminos y condiciones</span>
+                            </mat-checkbox>
+                        </div>
+                        <!--TERMINOS-->
+                    </form>
+                    <mat-divider></mat-divider><br>
+                    <div>
+                        <button mat-raised-button class="button" [disabled]="formRegister.invalid">
+                            <!-- (click)="nextPage()" -->
+                            <span>Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

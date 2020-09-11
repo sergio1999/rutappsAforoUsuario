@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "site": "aforo-visitante",
+    "public": "dist/rutappsAforoUsuario/",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+

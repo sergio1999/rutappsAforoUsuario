@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rutappsAforoUsuario';
+  
+  @BlockUI() blockUI: NgBlockUI;
+
+  constructor(){
+    // this.blockUI.start('Loading...'); // Start blocking
+ 
+    // setTimeout(() => {
+    //   this.blockUI.stop(); // Stop blocking
+    // }, 2000);
+  }
 }
