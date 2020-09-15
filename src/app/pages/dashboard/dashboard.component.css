@@ -1,0 +1,47 @@
+.perfil {
+    text-align: right;
+    text-decoration-line: underline;
+    color: #1E266D;
+    font-size: 14px;
+}
+
+.text-title {
+    font-weight: bold;
+    font-size: 24px;
+    color: #000000;
+}
+
+.contcodigo {
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+.codigoQR {
+    width: 44%;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 12px 8px rgba(181, 181, 214, 0.54);
+    border-radius: 20px;
+    margin-left: 29%;
+    text-align: center;
+    align-items: center;
+}
+
+@media(max-width: 768px)
+and (max-device-width : 1826px)  {   
+    .images {
+        width: 100%;
+    }
+
+    .codigoQR {
+        width: 81%;
+        margin-left: 12%
+    }
+
+    .textQr {
+        font-size: 12px;
+    }
+
+    .download{
+        font-style: 10px !important;
+    }
+}

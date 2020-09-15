@@ -8,14 +8,18 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BlockUIModule } from 'ng-block-ui';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// qr code
+import { QRCodeModule } from 'angularx-qrcode';
 // components
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent, contentDialogError } from './pages/login/login.component';
+import { RegisterComponent, contentDialogErrorRegistro } from './pages/register/register.component';
 // firebase
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { HttpClientModule } from '@angular/common/http';
 // material
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
@@ -37,10 +41,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RetrievePassComponent } from './pages/retrieve-pass/retrieve-pass.component';
-
-
-
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +50,12 @@ import { RetrievePassComponent } from './pages/retrieve-pass/retrieve-pass.compo
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    RetrievePassComponent
+    RetrievePassComponent,
+    DashboardComponent,
+    contentDialogError,
+    contentDialogErrorRegistro
   ],
+  entryComponents: [contentDialogError, contentDialogErrorRegistro],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -75,11 +80,14 @@ import { RetrievePassComponent } from './pages/retrieve-pass/retrieve-pass.compo
     MatCheckboxModule,
     MatDialogModule,
     BlockUIModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

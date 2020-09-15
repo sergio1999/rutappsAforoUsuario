@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex" id="navbar" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex fixed-top" id="navbar" >
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,11 +12,14 @@
         <a class="nav-link p-2 colorText" routerLinkActive="active" href="https://controlaforo.co/#contacto">Contáctenos</a>
 
         <div class="px-0 py-2" >
-            <p class="nav-link px-0 py-2 mb-0" *ngIf="path != 'registro'">
+            <p class="nav-link px-0 py-2 mb-0" *ngIf="registro" >
                 <button mat-raised-button class="btnheader ml-2" (click)="redirectTo('/registro')">Registrar</button>
             </p>
-            <p class="nav-link px-0 py-2 mb-0" *ngIf="path == 'registro'">
+            <p class="nav-link px-0 py-2 mb-0" *ngIf="iniciar" >
                 <button mat-raised-button class="btnheader ml-2" (click)="redirectTo('/login')">Ingresar</button>
+            </p>
+            <p class="nav-link px-0 py-2 mb-0" *ngIf="cerrar" >
+                <button mat-raised-button class="btnheader ml-2" (click)="logout()">Cerrar sesión</button>
             </p>
         </div>
     </div>

@@ -1,0 +1,42 @@
+<div class="container-fluid" style="margin-top: 84px;" >
+
+    <div class="container pb-3" >
+        <div class="pt-3" >
+            <div class="pt-5" >
+                <div class="mt-3 mb-3" style="font-size: 16px; text-decoration: underline; color: #1e266d">
+                    <!-- {{url}} -->
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <span class="text-title"> Bienvenid@, {{data.nombre}}</span>
+                    </div>
+                    <div class="col-md-3">
+                        <button mat-icon-button class="perfil" (click)="editprofile()">
+                            <mat-icon>create</mat-icon>
+                            Editar mi perfil
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <mat-divider class="mt-4"></mat-divider>
+            <div class="container contcodigo pt-5">
+                <div class="codigoQR">
+                    <div class="mt-4">Tu Código QR único de visita es</div>
+                    <div class="px-3">
+                        <qrcode #codigo id="codigo" [qrdata]="datosQr" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                        <!-- <div style="color: #000000; font-weight: 800;">Número asociado 33H3D3FF3V</div> -->
+                    </div>
+                    <mat-divider class="mt-4 mb-2"></mat-divider>
+                    <div class="container-fluid mb-3">                   
+                        <div class="d-inline-flex align-items-center" style="cursor: pointer;" (click)="saveAsImage(codigo)">
+                            <mat-icon [ngStyle]="{'width': '20%'}">arrow_downward</mat-icon>  
+                            <span class="download"> Descarga esta imagen en tu dispositivo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

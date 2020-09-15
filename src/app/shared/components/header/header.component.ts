@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, NavigationEnd, ResolveEnd } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -8,17 +8,39 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  path: String;
+  registro: boolean = false;
+  cerrar: boolean = false;
+  iniciar: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    router.events.subscribe((val) => {
+
+      if(router.url.toString() == '/' || router.url.toString() == '/login'){
+        this.registro = true;
+        this.cerrar = false;
+        this.iniciar = false;
+      }else if(router.url.toString() == '/registro' || router.url.toString() == '/recuperar-contrasena'){
+        this.registro = false;
+        this.cerrar = false;
+        this.iniciar = true;
+      }else if(router.url.toString() == '/dashboard'){
+        this.registro = false;
+        this.cerrar = true;
+        this.iniciar = false;
+      }
+
+    })
+  }
 
   redirectTo(url){
     this.router.navigateByUrl(url)
   }
 
-  ngOnInit() {
-    this.path = window.location.pathname;
-    console.log(this.path)
+  ngOnInit() { }
+
+  logout(){
+    window.localStorage.clear()
+    this.router.navigateByUrl('/');
   }
 
 }

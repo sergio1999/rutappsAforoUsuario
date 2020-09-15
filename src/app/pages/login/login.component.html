@@ -1,16 +1,16 @@
-<div class="container-fluid"  >
-    <div class="row">
-        <div class="col-md-6 pl-0">
-            <img src="assets/login/bg.png" alt="bg" class="img-fluid d-none d-lg-block d-xl-block">
+<div class="container-fluid" style="margin-top: 84px;" >
+    <div class="row" style="height: 55.3rem;">
+        <div class="col-md-6 pl-0 d-none d-lg-flex d-xl-flex d-md-flex" style="background-image: url('assets/login/fondo-usuario.png'); background-size: cover; background-repeat: no-repeat; background-position: center;
+        justify-content: center; align-items: center;">
+            <div class="letter-whitex2 text-center"> Aforo estás<br>seguro, no dejes<br>de asistir a tu<br>comercio favorito.</div>
         </div>
         <div class="col-md-6 pb-5">
             <div class=" mt-3 pt-4 pb-1 mb-5">
                 <div class="mt-3 pt-4 pl-5 mb-5">
                     <div class="loginText" class="mb-3">Ingresar</div><br>
                     <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-                        <input type="text" class="inputType" formControlName="documento" placeholder="Cédula de ciudadanía"><br>
+                        <input type="text" class="inputType" formControlName="correo" placeholder="Correo"><br>
                         <input type="password" class="mt-4 inputType" formControlName="password" placeholder="Contraseña"><br>
-
                         <button mat-raised-button type="submit" class="button mt-4">Continuar</button>
                     </form>
                     <div class="container-fluid mt-5">

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RetrievePassComponent } from './pages/retrieve-pass/retrieve-pass.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegisterComponent},
   {path: 'recuperar-contrasena', component: RetrievePassComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: '**', component: LoginComponent},
 ];
 

@@ -24,3 +24,10 @@
 }
 
 .button:focus {outline: 0;}
+
+.letter-whitex2{
+    font-size: 60px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 65px;
+}

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase: {
+  firebaseConfig: {
     apiKey: "AIzaSyCnblhLpv8WHL5UcXCNtq17Z39BaD6T63g",
     authDomain: "aforo-41bbd.firebaseapp.com",
     databaseURL: "https://aforo-41bbd.firebaseio.com",
