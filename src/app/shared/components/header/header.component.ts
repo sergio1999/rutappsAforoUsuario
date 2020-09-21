@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
         this.registro = false;
         this.cerrar = false;
         this.iniciar = true;
-      }else if(router.url.toString() == '/dashboard'){
+      }else if(router.url.toString() == '/dashboard' || router.url.toString() == '/editar-perfil'){
         this.registro = false;
         this.cerrar = true;
         this.iniciar = false;

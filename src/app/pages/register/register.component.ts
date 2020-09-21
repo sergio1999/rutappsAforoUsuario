@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/service/app.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NgBlockUI, BlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,8 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  @BlockUI() blockUI: NgBlockUI;
 
   formRegister = new FormGroup({
     documento: new FormControl('', [Validators.required, Validators.pattern('[0-9]+')]),
@@ -47,7 +50,6 @@ export class RegisterComponent implements OnInit {
 
   passwordMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) =>{
-      //console.log("end$", controlName, matchingControlName)
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
 
@@ -68,6 +70,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registrar(){
+    this.blockUI.start('Cargando');
     var dataservice = {
       "nombre": this.formRegisterPersonal.get('nombres').value + ' ' + this.formRegisterPersonal.get('apellidos').value,
       "celular": this.formContacto.get('celular').value.toString(),
@@ -76,7 +79,7 @@ export class RegisterComponent implements OnInit {
       "clave": this.formContrasena.get('password').value
     };
     this.service.post('visitante', dataservice).subscribe((data: any) => {
-      console.log(data)
+      this.blockUI.stop();
       if (data.error == 0) {
         this.dialog.open(contentDialogErrorRegistro,{
           data: {

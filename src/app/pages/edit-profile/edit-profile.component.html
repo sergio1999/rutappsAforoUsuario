@@ -1,0 +1,95 @@
+<div class="container-fluid" style="margin-top: 84px;" >
+
+    <div class="container pb-3" >
+        <div class="pt-3" >
+            <button mat-icon-button (click)="backPage('/dashboard')" class="mr-0 mr-sm-16 buttonInicio"> 
+                <mat-icon>arrow_back_ios</mat-icon> Volver
+            </button>
+            <div>
+                <span style=" font-weight: bold; font-size: 24px; color: #000000;">Bienvenid@, {{data.nombre}}</span>
+            </div>
+        </div>
+        <mat-divider class="mt-4"></mat-divider>
+        <div class="container contForm pt-2 mt-4  pb-5 mb-5 ">
+            <div class="box" > 
+                    <span class="textDate ml-3">Datos del Perfil</span>
+                <div class="row mt-4">
+                    <div class="col-md-6 justify-content-center">
+                        <div style="text-align: center; margin-top: 20px;">
+                            <form [formGroup]=" formEditProfile" >
+                                <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Nombre y apellidos</mat-label>
+                                    <input matInput placeholder="Nombre" type="text" formControlName="nombre" required>
+                                </mat-form-field>
+                                <mat-form-field  appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Cédula de ciudadanía</mat-label>
+                                    <input matInput placeholder="Cédula de ciudadanía" type="text" formControlName="cedula_de_ciudadania" required>
+                                </mat-form-field>
+                                <!-- <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Apellido</mat-label>
+                                    <input matInput placeholder="Apellido" type="text" formControlName="apellido" required>
+                                </mat-form-field> -->
+                                <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Teléfono celular</mat-label>
+                                    <input matInput placeholder="Teléfonocelular" type="number" formControlName="telefono_celular" required>
+                                </mat-form-field>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6 justify-content-center">
+                        <mat-divider class="d-block d-sm-none"></mat-divider>
+                        <div style="text-align: center;">
+                            <form [formGroup]="formEditProfile">
+                                <!-- <mat-form-field appearance="outline"  fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Ciudad de recidencia</mat-label>
+                                        <mat-select formControlName="ciudad_de_recidencia">
+                                            <mat-option *ngFor="let city of ciudades" [value]="city.ciudad">
+                                                {{city.ciudad}}
+                                            </mat-option>
+                                        </mat-select>
+                                </mat-form-field> -->
+                                <mat-form-field  appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Correo electrónico</mat-label>
+                                    <input matInput placeholder="Correo electrónico" type="text" formControlName="correo_electronico" required>
+                                        <mat-error *ngIf="formEditProfile.controls.correo_electronico.status == 'INVALID'">debes ingresar un correo valido*</mat-error> 
+                                </mat-form-field>
+                                <mat-form-field  appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Clave</mat-label>
+                                    <input matInput placeholder="contraseña" [type]="hide ? 'password' : 'text'" formControlName="contrasena" required>
+                                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4 w-100">
+                                    <mat-label>Dirección</mat-label>
+                                    <input matInput placeholder="Dirección" type="text" formControlName="direccion" required>
+                                </mat-form-field>
+                            </form>
+                        </div>
+                        <mat-divider class="mt-4 mb-2"></mat-divider>
+                        <button mat-raised-button type="submit" [disabled]="formEditProfile.invalid" class="button mt-4 float-right" (click)="editatPerfil()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="container-fluid mt-1 d-none d-lg-block d-xl-block" >
+    <div class="row">
+        <div class="col-md-6">
+            <div id="copy"> Este producto fue desarrollado por Rutapps S.A.S Copyright © 2020 </div>
+        </div>
+        <div class="col-md-6">
+            <div id="term"> <a href="https://rutapps.co/terminosCondiciones.html" target="_blank" rel="noopener noreferrer">Términos y Condiciones  |  Políticas de Privacidad y Manejo de Datos</a> </div><br>
+        </div>
+    </div>
+</div>
+<div class="container-fluid footerPage d-block d-sm-none" >
+    <div class="row">
+        <div class="col-md-6">
+            <div id="copy"> Este producto fue desarrollado por Rutapps S.A.S Copyright © 2020 </div>
+        </div>
+        <div class="col-md-6">
+            <div id="term"> <a href="https://rutapps.co/terminosCondiciones.html" target="_blank" rel="noopener noreferrer">Términos y Condiciones  |  Políticas de Privacidad y Manejo de Datos</a> </div><br>
+        </div>
+    </div>
+</div> -->

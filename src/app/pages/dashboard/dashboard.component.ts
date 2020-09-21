@@ -19,17 +19,12 @@ export class DashboardComponent implements OnInit {
       this.route.navigateByUrl('/')
     }else{
       this.data = JSON.parse(window.localStorage.getItem('visitante'));
-      console.log(this.data)
-      var datos = {
-        documento: this.data.documento,
-        celular: this.data.celular
-      }
-      this.datosQr = JSON.stringify(datos);
+      this.datosQr = this.data.qr;
     }
   }
 
   editprofile(){
-    console.log('edit')
+    this.route.navigateByUrl('/editar-perfil')
   }
 
   saveAsImage(codigo: any) {

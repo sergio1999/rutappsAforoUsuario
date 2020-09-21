@@ -1,0 +1,17 @@
+.button {
+    background: #471BA6; 
+    color: #FFFFFF; 
+    border-radius: 50px; 
+    height: 50px;
+    width: 120px;
+}
+.letter-whitex2{
+    font-size: 60px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 65px;
+}
+.text {
+    font-size: 24px;
+    color: #000000;
+}

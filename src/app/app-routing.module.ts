@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RetrievePassComponent } from './pages/retrieve-pass/retrieve-pass.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'registro', component: RegisterComponent},
   {path: 'recuperar-contrasena', component: RetrievePassComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'editar-perfil', component: EditProfileComponent},
   {path: '**', component: LoginComponent},
 ];
 

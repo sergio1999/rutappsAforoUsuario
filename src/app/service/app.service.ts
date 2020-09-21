@@ -42,5 +42,14 @@ export class AppService {
       // retry(3)
     );
   }
+
+  put(url, data): Observable<any>{
+    const api = `${this.api}${url}`;
+    const param = {data: data};
+    return this.http.put(api, param)
+    .pipe(
+      catchError(this.errorHandl)
+    );
+  }
   
 }

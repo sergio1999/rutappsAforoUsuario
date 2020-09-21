@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BlockUIModule } from 'ng-block-ui';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// block ui
+import { BlockUIModule } from 'ng-block-ui';
 // qr code
 import { QRCodeModule } from 'angularx-qrcode';
 // components
@@ -42,6 +43,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RetrievePassComponent } from './pages/retrieve-pass/retrieve-pass.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { contentDialogErrorEditar, EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +55,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     RetrievePassComponent,
     DashboardComponent,
     contentDialogError,
-    contentDialogErrorRegistro
+    contentDialogErrorRegistro,
+    contentDialogErrorEditar,
+    EditProfileComponent
   ],
-  entryComponents: [contentDialogError, contentDialogErrorRegistro],
+  entryComponents: [contentDialogError, contentDialogErrorRegistro, contentDialogErrorEditar],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "https://us-central1-aforo-41bbd.cloudfunctions.net/",
+      "secure": false,
+      "logLevel":"debug"
+    }
+}
