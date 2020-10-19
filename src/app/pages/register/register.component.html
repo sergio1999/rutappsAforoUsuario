@@ -2,32 +2,108 @@
     <div class="row" style="height: 55.3rem;">
         <div class="col-md-6 pl-0 d-none d-lg-flex d-xl-flex d-md-flex" style="background-image: url('assets/login/fondo-usuario.png'); background-size: cover; background-repeat: no-repeat; background-position: center;
         justify-content: center; align-items: center;">
-            <div class="letter-whitex2 text-center"> Aforo estás<br>seguro, no dejes<br>de asistir a tu<br>comercio favorito.</div>
+            <div class="letter-whitex2 text-center"> Aforo estás<br>seguro, no dejes<br>de asistir a tu<br>comercio
+                favorito.</div>
         </div>
         <div class="col-md-6 pb-5">
-            <div class="mt-3 pt-3 pb-1 mb-5 ml-3" *ngIf="paso == 'datos-personales'">
-                <button mat-icon-button (click)="backPage('/login')" class="mr-0 mr-sm-16 buttonInicio"> 
+            <!-- *ngIf="paso == 'datos-personales'" -->
+            <div class="mt-3 pt-3 pb-1 mb-5 ml-3">
+                <button mat-icon-button (click)="backPage('/login')" class="mr-0 mr-sm-16 buttonInicio">
                     <mat-icon>arrow_back_ios</mat-icon> Volver
                 </button>
                 <div style="text-align: end; color: #000000; font-size: 12px;">Paso 1 de 4</div>
                 <div class="mt-3 pt-4 pl-5 mb-5">
-                    <div style="font-size: 18px; color: #7646ff">Ingresa tus datos personales</div><br>
-                    <div style="color: rgba(69,88,128, 0.5); font-size: 14px">*Ingresa tus documentos para continuar con el registro</div><br>
-                    <mat-divider></mat-divider><br><br>
-                    <form [formGroup]="formRegister" >
-                        <mat-form-field appearance="outline"  fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4">
+                    <div style="font-size: 18px; color: #7646ff">Ingresa tus datos personales</div>
+                    <div style="color: rgba(69,88,128, 0.5); font-size: 14px">*Ingresa tus documentos para continuar con
+                        el registro</div><br>
+                    <!-- <mat-divider></mat-divider> -->
+                    <form [formGroup]="formRegister">
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4" style="width: 45%;">
                             <mat-label>Numero de documento</mat-label>
                             <input matInput placeholder="Documento" type="number" formControlName="documento" required>
-                            <mat-error *ngIf="formRegister.controls.documento.status == 'INVALID'">Este campo es obligatorio*</mat-error> 
+                            <mat-error *ngIf="formRegister.controls.documento.status == 'INVALID'">Este campo es
+                                obligatorio*</mat-error>
                         </mat-form-field>
-                        <mat-form-field appearance="outline"  fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" >
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" style="width: 45%;">
                             <mat-label>Tipo de documento</mat-label>
-                                <mat-select formControlName="typeDoc">
-                                    <mat-option *ngFor="let documento of documents" [value]="documento.doc">
-                                        {{documento.doc}}
-                                    </mat-option>
-                                </mat-select>
+                            <mat-select formControlName="typeDoc">
+                                <mat-option *ngFor="let documento of documents" [value]="documento.doc">
+                                    {{documento.doc}}
+                                </mat-option>
+                            </mat-select>
                         </mat-form-field>
+                    </form>
+                    <mat-divider></mat-divider>
+                    <br>
+                    <!-- formRegisterPersonal -->
+                    <div style="font-size: 18px; color: #7646ff" class="mt-2">Guardaremos tu información personal</div>
+                    <br>
+                    <!-- <br> -->
+                    <!-- <mat-divider></mat-divider><br> -->
+                    <form [formGroup]="formRegisterPersonal">
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4">
+                            <mat-label>Nombres</mat-label>
+                            <input matInput placeholder="Tu nombre" name="nombres" type="text" required
+                                formControlName="nombres">
+                            <mat-error *ngIf="formRegisterPersonal.controls.nombres.status == 'INVALID'">Este campo es
+                                obligatorio*</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput placeholder="Tus apellidos" name="apellidos" type="text" required
+                                formControlName="apellidos">
+                            <mat-error *ngIf="formRegisterPersonal.controls.apellidos.status == 'INVALID'">Este campo es
+                                obligatorio*</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4">
+                            <mat-label>Correo</mat-label>
+                            <input matInput placeholder="correo electronico" name="correo" type="email" required
+                                formControlName="correo">
+                            <mat-error *ngIf="formRegisterPersonal.controls.correo.status == 'INVALID'">Este campo es
+                                obligatorio*</mat-error>
+                        </mat-form-field>
+                    </form>
+                    <mat-divider></mat-divider>
+                    <br>
+                    <div style="font-size: 18px; color: #7646ff" class="mt-2">Con tu numero de contacto nos podremos
+                        comunicar con tigo</div><br>
+                    <!-- <mat-divider></mat-divider> -->
+                    <form [formGroup]="formContacto">
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4" style="width: 45%;">
+                            <mat-label>Numero de telefono</mat-label>
+                            <input matInput placeholder="Tu numero de contacto" name="celular" type="number" required
+                                formControlName="celular">
+                            <mat-error *ngIf="formContacto.controls.celular.status == 'INVALID'">Este campo es
+                                obligatorio*</mat-error>
+                        </mat-form-field>
+                    </form>
+                    <mat-divider></mat-divider><br>
+                    <div style="font-size: 18px; color: #7646ff" class="mt-2">Añade tu contraseña</div><br>
+                    <div style="color: rgba(69,88,128, 0.5); font-size: 14px">*Ingresa una contraseña de maximo 8
+                        caracteres, procura que sea lo suficientemente segura!</div><br>
+                    <!-- <mat-divider></mat-divider> -->
+                    <!-- <br><br> -->
+                    <form [formGroup]="formContrasena">
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4" style="width: 45%;">
+                            <mat-label>Ingresa tu contraseña</mat-label>
+                            <input matInput placeholder="contraseña" name="pass" type="password" required
+                                formControlName="password">
+                            <mat-error *ngIf="formContrasena.controls.password.status == 'INVALID'">Debes ingresar una
+                                contraseña valida*</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4" style="width: 45%;">
+                            <mat-label>Confirmar contraseña</mat-label>
+                            <input matInput placeholder="Verifica tu contraseña" name="confim" type="password" required
+                                formControlName="cpass">
+                            <mat-error *ngIf="formContrasena.controls.cpass.status == 'INVALID'">Debes ingresar una
+                                contraseña valida*</mat-error>
+                        </mat-form-field>
+                        <ng-container *ngIf="formContrasena.controls.cpass.hasError('passwordMatch') ">
+                            <br>
+                            <div class="alert alert-danger justify-content-center" role="alert" style="width: 70%;">
+                                las contraseñas no coinciden
+                            </div>
+                        </ng-container>
                         <br>
                         <div class="terms" fxLayout="row" fxLayoutAlign="center center">
                             <mat-checkbox aria-label="Accept" required formControlName="terminos">
@@ -35,16 +111,23 @@
                             </mat-checkbox>
                         </div>
                     </form>
+
                     <mat-divider></mat-divider><br>
                     <div>
+                        <button mat-raised-button (click)="registrar()"
+                            [disabled]="formRegister.invalid && formRegisterPersonal.invalid && formContacto.invalid && formContrasena.invalid">
+                            <span>Registrar</span>
+                        </button>
+                    </div>
+                    <!-- <div>
                         <button mat-raised-button class="button" [disabled]="formRegister.invalid" (click)="changePaso('informacion-personal')">
                             <span>Siguiente</span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
-            <div class="mt-3 pt-3 pb-1 mb-5 ml-3" *ngIf="paso == 'informacion-personal'">
+            <!-- <div class="mt-3 pt-3 pb-1 mb-5 ml-3" *ngIf="paso == 'informacion-personal'">
                 <button mat-icon-button class="mr-0 mr-sm-16 buttonInicio" (click)="changePaso('datos-personales')"> 
                     <mat-icon>arrow_back_ios</mat-icon> Volver
                 </button>
@@ -77,9 +160,9 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="mt-3 pt-3 pb-1 mb-5 ml-3" *ngIf="paso == 'informacion-contacto'">
+            <!-- <div class="mt-3 pt-3 pb-1 mb-5 ml-3" *ngIf="paso == 'informacion-contacto'">
                 <button mat-icon-button class="mr-0 mr-sm-16 buttonInicio" (click)="changePaso('informacion-personal')"> 
                     <mat-icon>arrow_back_ios</mat-icon> Volver
                 </button>
@@ -102,9 +185,9 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="mt-3 pt-3 pb-1 mb-5 ml-3" *ngIf="paso == 'contrasena'">
+            <!-- <div class="mt-3 pt-3 pb-1 mb-5 ml-3" *ngIf="paso == 'contrasena'">
                 <button mat-icon-button class="mr-0 mr-sm-16 buttonInicio" (click)="changePaso('informacion-contacto')"> 
                     <mat-icon>arrow_back_ios</mat-icon> Volver
                 </button>
@@ -115,13 +198,11 @@
                     <mat-divider></mat-divider>
                     <br><br>
                     <form [formGroup]="formContrasena">
-                        <!-- PASS-->
                         <mat-form-field appearance="outline"  fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4">
                             <mat-label>Ingresa tu contraseña</mat-label>
                             <input matInput placeholder="contraseña" name="pass" type="password" required formControlName="password">
                             <mat-error *ngIf="formContrasena.controls.password.status == 'INVALID'">Debes ingresar una contraseña valida*</mat-error> 
                         </mat-form-field>
-                        <!-- CONFIRMPASSWORD-->
                         <mat-form-field appearance="outline"  fxFlex.gt-sm="100%" fxFlex.gt-sm="100%" class="pr-4">
                             <mat-label>Confirmar contraseña</mat-label>
                             <input matInput placeholder="Verifica tu contraseña" name="confim" type="password" required formControlName="cpass">
@@ -143,7 +224,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

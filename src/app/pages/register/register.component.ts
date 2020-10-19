@@ -16,8 +16,7 @@ export class RegisterComponent implements OnInit {
 
   formRegister = new FormGroup({
     documento: new FormControl('', [Validators.required, Validators.pattern('[0-9]+')]),
-    typeDoc: new FormControl('', [Validators.required]),
-    terminos: new FormControl(false, [Validators.required]),
+    typeDoc: new FormControl('', [Validators.required])
   });
 
   formRegisterPersonal = new FormGroup({
@@ -30,47 +29,60 @@ export class RegisterComponent implements OnInit {
     celular: new FormControl('', [Validators.required])
   })
 
-  formContrasena : FormGroup;
+  formContrasena: FormGroup;
 
   paso: string = 'datos-personales';
 
-  documents:any = [
-    { typeDocument: 'cedula', doc: "Cedula de ciudadania"},
+  documents: any = [
+    { typeDocument: 'cedula', doc: "Cedula de ciudadania" },
     { typeDocument: 'cedulaExtranjera', doc: "Cedula de extrajeria" }
   ];
 
   constructor(private router: Router, private service: AppService, private dialog: MatDialog, public _fb: FormBuilder) { }
 
   ngOnInit() {
+    // this.formRegister = this._fb.group({
+    //   password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    //   cpass: new FormControl('', [Validators.required, Validators.minLength(6)])
+    // }, { validators: this.passwordMatch('password', 'cpass') })
+    
     this.formContrasena = this._fb.group({
-      password: new FormControl('', [Validators.required,Validators.minLength(6)]),
-      cpass: new FormControl('', [Validators.required,Validators.minLength(6)])
-    }, {validators: this.passwordMatch('password', 'cpass')})
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      cpass: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      terminos: new FormControl(false, [Validators.required]),
+    }, { validators: this.passwordMatch('password', 'cpass') })
   }
 
   passwordMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) =>{
+    return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
 
       if (control.value !== matchingControl.value) {
-          matchingControl.setErrors({ passwordMatch: true });
-      }else {
-          matchingControl.setErrors(null);
+        matchingControl.setErrors({ passwordMatch: true });
+      } else {
+        matchingControl.setErrors(null);
       };
     };
   };
 
-  backPage(url){
+  backPage(url) {
     this.router.navigateByUrl(url)
   }
 
-  changePaso(paso: string){
+  changePaso(paso: string) {
     this.paso = paso;
   }
 
-  registrar(){
+  registrar() {
     this.blockUI.start('Cargando');
+    // var dataservice = {
+    //   "nombre": this.formRegister.get('nombres').value + ' ' + this.formRegister.get('apellidos').value,
+    //   "celular": this.formRegister.get('celular').value.toString(),
+    //   "documento": this.formRegister.get('documento').value.toString(),
+    //   "correo": this.formRegister.get('correo').value,
+    //   "clave": this.formRegister.get('password').value
+    // };
     var dataservice = {
       "nombre": this.formRegisterPersonal.get('nombres').value + ' ' + this.formRegisterPersonal.get('apellidos').value,
       "celular": this.formContacto.get('celular').value.toString(),
@@ -81,20 +93,20 @@ export class RegisterComponent implements OnInit {
     this.service.post('visitante', dataservice).subscribe((data: any) => {
       this.blockUI.stop();
       if (data.error == 0) {
-        this.dialog.open(contentDialogErrorRegistro,{
+        this.dialog.open(contentDialogErrorRegistro, {
           data: {
             text: data.response,
             actions: true,
           },
-          width : '470px' 
+          width: '470px'
         });
       } else {
-        this.dialog.open(contentDialogErrorRegistro,{
+        this.dialog.open(contentDialogErrorRegistro, {
           data: {
             text: data.response,
             actions: true,
           },
-          width : '470px' 
+          width: '470px'
         });
       }
       this.router.navigateByUrl('/')
@@ -111,5 +123,5 @@ export class contentDialogErrorRegistro {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<contentDialogErrorRegistro>,
     public router: ActivatedRoute,
-    public _router: Router){}
+    public _router: Router) { }
 }
